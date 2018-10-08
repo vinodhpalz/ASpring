@@ -12,15 +12,15 @@
   </head>
   <body>
    
-	<form>
+	<form action="${pageContext.request.contextPath}/welcome" method="post">
 	<div class="form-group">
 	<label for="exampleEmail">Email Address</label>
-	<input type="email" class="form-control" id="exampleEmail" placeholder="Enter Email">
+	<input type="email" class="form-control" id="exampleEmail" name="exampleEmail" placeholder="Enter Email">
 	</div>
 	
 	<div class="form-group">
 	<label for="examplePass">Password</label>
-	<input type="password" class="form-control" id="examplePass" placeholder="Enter Password">
+	<input type="password" class="form-control" id="examplePass" name="examplePass" placeholder="Enter Password">
 	</div>
 	
 	<div class="form-check">

@@ -1,9 +1,16 @@
 package controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import model.Product;
+import model.ProductDAO;
+import model.User;
+import model.UserDAO;
 //controller comment
 @Controller
 public class HomeController {
@@ -11,13 +18,23 @@ public class HomeController {
 		@RequestMapping(value="/",method=RequestMethod.GET)
 		public String welcome()
 		{
-			return "home";
-		}
-		
-		@RequestMapping(value="/home",method=RequestMethod.GET)
-		public String user(Model m1)
-		{
-			m1.addAttribute("name", "vinodh");
 			return "user";
 		}
+		
+		@RequestMapping(value="/welcome",method=RequestMethod.POST)
+		public String user(@ModelAttribute("user") User user, BindingResult result)
+		{	
+			try
+	    	{
+				UserDAO pd = new UserDAO();
+	    		pd.insertUser(user);
+	    		System.out.println("Success");
+	    	}catch(Exception ex)
+	    	{
+	    		ex.printStackTrace();
+	    	}
+				return "welcome";	
+		}
+		
+	
 }
